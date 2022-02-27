@@ -9,7 +9,7 @@ MudBase is designed to give the developer plenty of freedom in how the MUD is de
   
 ## Planned Features
 
-  • An Input handling module
+  • An Input handling module.
   • A Database module
   • A Map/Room system module
   • A pathfinding module
