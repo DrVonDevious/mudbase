@@ -1,6 +1,6 @@
 # MudBase
 
-The MudBase library contains helpful tools for getting a MUD up and running quickly.
+The MudBase library contains helpful tools for getting a MUD up and running quickly.  
 MudBase is designed to give the developer plenty of freedom in how the MUD is designed.
 
 ## Current Features
