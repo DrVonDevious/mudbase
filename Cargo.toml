@@ -4,6 +4,7 @@ version = "0.1.1"
 edition = "2021"
 authors = ["Caleb Rutland <caleb@thedevious.dev>"]
 description = "A library to help make developing MUDs in Rust a breeze"
+publish = true
 readme = "README.md"
 homepage = "https://github.com/DrVonDevious/mudbase"
 repository = "https://github.com/DrVonDevious/mudbase"
