@@ -8,6 +8,7 @@ publish = true
 readme = "README.md"
 homepage = "https://github.com/DrVonDevious/mudbase"
 repository = "https://github.com/DrVonDevious/mudbase"
+changelog = "CHANGELOG.md"
 license = "MIT"
 keywords = ["engine", "tcp", "mud"]
 
