@@ -1,3 +1,3 @@
-pub mod server {
-    pub use crate::server::*;
-}
+mod server;
+
+pub use self::server::*;
