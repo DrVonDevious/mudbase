@@ -4,8 +4,11 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Caleb Rutland <caleb@thedevious.dev>"]
 description = "A library to help make developing MUDs in Rust a breeze"
+readme = "README.md"
+homepage = "https://github.com/DrVonDevious/mudbase"
 repository = "https://github.com/DrVonDevious/mudbase"
 license = "MIT"
+keywords = ["engine", "tcp", "mud"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
