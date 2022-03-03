@@ -1,3 +1,7 @@
+## Mudbase Server
+mudbase_server is a sub-module of the Mudbase library that makes it  
+easier to start and configure a simple TCP server.
+
 ## Example
 
 ```rust
