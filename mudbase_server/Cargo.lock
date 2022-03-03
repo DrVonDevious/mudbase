@@ -3,12 +3,5 @@
 version = 3
 
 [[package]]
-name = "mudbase"
-version = "0.1.2"
-dependencies = [
- "mudbase_server",
-]
-
-[[package]]
 name = "mudbase_server"
 version = "0.1.0"
