@@ -2,6 +2,14 @@
 name = "mudbase_server"
 version = "0.1.0"
 edition = "2021"
+authors = ["Caleb Rutland <caleb@thedevious.dev>"]
+desscription = "A library for configuring and running a simple TCP server"
+publish = true
+readme = "README.md"
+homepage = "https://github.com/DrVonDevious/mudbase"
+repository = "https://github.com/DrVonDevious/mudbase"
+license = "MIT"
+keywords = ["tcp", "mud", "server"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
