@@ -10,7 +10,7 @@ homepage = "https://github.com/DrVonDevious/mudbase"
 repository = "https://github.com/DrVonDevious/mudbase"
 changelog = "CHANGELOG.md"
 license = "MIT"
-keywords = ["engine", "tcp", "mud"]
+keywords = ["game-engine", "tcp", "mud"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
