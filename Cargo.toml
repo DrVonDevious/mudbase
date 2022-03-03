@@ -16,8 +16,3 @@ keywords = ["game-engine", "tcp", "mud"]
 
 [dependencies]
 mudbase_server = { path = "./mudbase_server", version = "0.1.0" }
-
-[workspace]
-members = [
-  "mudbase_server"
-]
