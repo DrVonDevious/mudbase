@@ -16,3 +16,8 @@ keywords = ["engine", "tcp", "mud"]
 
 [dependencies]
 mudbase_server = { path = "./mudbase_server" }
+
+[workspace]
+members = [
+  "mudbase_server"
+]
