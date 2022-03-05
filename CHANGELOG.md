@@ -1,3 +1,19 @@
+<a name="0.1.4"></a>
+## 0.1.4 (2022-03-05)
+
+
+#### Features
+
+*   add the send method to mudbase_server
+*   add the send_all method to mudbase_server
+
+
+#### BREAKING CHANGES
+
+*   add session parameter of type SessionType to handle_message method
+
+
+
 <a name="0.1.3"></a>
 ## 0.1.3 (2022-03-03)
 
