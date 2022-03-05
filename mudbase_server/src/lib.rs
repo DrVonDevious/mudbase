@@ -1,7 +1,7 @@
 pub mod prelude {
     use std::net::{TcpListener, TcpStream, SocketAddr};
     use std::io::prelude::*;
-    use std::io::BufReader;
+    use std::io::{ BufReader, BufWriter };
     use std::thread;
     use std::sync::{Arc, Mutex};
 
@@ -94,7 +94,29 @@ pub mod prelude {
                     }
                 }
 
-                Self::handle_message(&message, &addr.to_string());
+                let mut session: SessionType = (stream.try_clone().unwrap(), addr);
+
+                Self::handle_message(&mut session, &message, &addr.to_string());
+            }
+        }
+
+        /// Sends a given message to the specified session
+        ///
+        /// # Arguments
+        /// * `session` - A SessionType to send data to
+        /// * `message` - A string slice containing the message you want to send to the session
+        fn send(session: &mut SessionType, message: &str) {
+            session.0.write(message.as_bytes()).unwrap();
+        }
+
+        /// Sends a given message to all connected clients
+        ///
+        /// # Arguments
+        /// * `sessions` - A SessionsType containing all clients to send data to
+        /// * `message` - A string slice containing the message you want to send to the clients
+        fn send_all(sessions: &mut SessionsType, message: &str) {
+            for session in sessions.lock().unwrap().iter_mut() {
+                session.0.write(message.as_bytes()).unwrap();
             }
         }
 
@@ -104,6 +126,6 @@ pub mod prelude {
         /// * `message` - A string slice that contains the message sent by the client
         /// * `address` - The host address of the client that sent the message
         #[allow(unused_variables)]
-        fn handle_message(message: &str, address: &str); 
+        fn handle_message(stream: &mut SessionType, message: &str, address: &str); 
     }
 }
