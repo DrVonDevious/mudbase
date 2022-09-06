@@ -1,3 +1,18 @@
+<a name="1.0.0"></a>
+## 1.0.0 (2022-09-05)
+
+
+#### Features
+
+*   add on_connect and on_disconnect listener methods
+
+
+#### BREAKING CHANGES
+
+*   renamed handle_message method to on_message
+
+
+
 <a name="0.1.4"></a>
 ## 0.1.4 (2022-03-05)
 

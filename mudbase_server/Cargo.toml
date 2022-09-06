@@ -1,6 +1,6 @@
 [package]
 name = "mudbase_server"
-version = "0.1.1"
+version = "1.0.0"
 edition = "2021"
 authors = ["Caleb Rutland <caleb@thedevious.dev>"]
 description = "A library for configuring and running a simple TCP server"

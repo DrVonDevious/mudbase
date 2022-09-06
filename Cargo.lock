@@ -4,11 +4,11 @@ version = 3
 
 [[package]]
 name = "mudbase"
-version = "0.1.4"
+version = "1.0.0"
 dependencies = [
  "mudbase_server",
 ]
 
 [[package]]
 name = "mudbase_server"
-version = "0.1.1"
+version = "1.0.0"
