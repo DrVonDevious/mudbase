@@ -7,11 +7,10 @@ pub mod prelude {
 
     /// A type for a single client session.
     /// Contains a single TcpStream and an address
-    #[allow(dead_code)]
     pub type SessionType = (TcpStream, SocketAddr);
+
     /// A type for a collection of client sessions
     /// Contains many sessions with SessionType
-    #[allow(dead_code)]
     pub type SessionsType = Arc<Mutex<Vec<SessionType>>>;
 
     pub struct Sessions {}
@@ -24,14 +23,7 @@ pub mod prelude {
         }
     }
 
-    #[allow(dead_code)]
     struct ClientState(String, SocketAddr);
-
-    /// A basic server object that keeps track of all connected clients
-    #[allow(dead_code)]
-    pub struct MudServer {
-        pub sessions: Sessions,
-    }
 
     pub trait ServerHandler {
         /// Binds a TCP server to the given host address and port number,
@@ -63,7 +55,7 @@ pub mod prelude {
                         let sessions = Arc::clone(&sessions);
 
                         threads.push(thread::spawn(move || {
-                            Self::handle_client(stream, sessions, addr);
+                            Self::_handle_client(stream, sessions, addr);
                         }));
                     }
                         Err(e) => println!("couldn't get client: {:?}", e),
@@ -71,7 +63,7 @@ pub mod prelude {
             }
         }
 
-        fn handle_client(stream: TcpStream, sessions: Arc<Mutex<Vec<(TcpStream, SocketAddr)>>>, addr: SocketAddr) {
+        fn _handle_client(stream: TcpStream, sessions: Arc<Mutex<Vec<(TcpStream, SocketAddr)>>>, addr: SocketAddr) {
             let client_state = ClientState("".to_string(), addr);
             let mut session: SessionType = (stream.try_clone().unwrap(), addr);
             let mut reader = BufReader::new(stream.try_clone().unwrap());
@@ -122,7 +114,7 @@ pub mod prelude {
         /// * `message` - A string slice containing the message you want to send to the clients
         fn send_all(sessions: &mut SessionsType, message: &str) {
             for session in sessions.lock().unwrap().iter_mut() {
-                session.0.write(message.as_bytes()).unwrap();
+                Self::send(session, message);
             }
         }
 
