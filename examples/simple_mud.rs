@@ -13,7 +13,16 @@ impl Server {
 }
 
 impl ServerHandler for Server {
-    fn handle_message(session: &mut SessionType, message: &str, address: &str) {
+    fn on_connect(session: &mut SessionType) {
+        println!("Client connected! {}", session.1);
+        Self::send(session, "Welcome to MudBase!")
+    }
+
+    fn on_disconnect(session: &mut SessionType) {
+        println!("Client disconnected! {}", session.1);
+    }
+
+    fn on_message(session: &mut SessionType, message: &str, address: &str) {
       print!("{} says: {}", address, message);  
 
       // echos back the message

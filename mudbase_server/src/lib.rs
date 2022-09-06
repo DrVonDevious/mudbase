@@ -1,7 +1,7 @@
 pub mod prelude {
     use std::net::{TcpListener, TcpStream, SocketAddr};
     use std::io::prelude::*;
-    use std::io::{ BufReader, BufWriter };
+    use std::io::{ BufReader };
     use std::thread;
     use std::sync::{Arc, Mutex};
 
@@ -41,7 +41,9 @@ pub mod prelude {
         /// * `addr` - A string slice for the host address
         /// * `port` - A string slice for the port number
         fn start(&self, addr: &str, port: &str) -> TcpListener {
-            TcpListener::bind(format!("{}:{}", addr, port)).unwrap()
+            let listener: TcpListener = TcpListener::bind(format!("{}:{}", addr, port)).unwrap();
+            println!("Server initialized!");
+            return listener;
         }
 
         /// Begins listening for client connections
@@ -51,6 +53,8 @@ pub mod prelude {
         /// * `sessions` - A collection of Sessions which connected clients can be added to
         fn listen(&self, listener: TcpListener, sessions: SessionsType) {
             let mut threads = vec![];
+
+            println!("Server started. Listening at {}", listener.local_addr().unwrap());
 
             loop {
                 match listener.accept() {
@@ -68,12 +72,14 @@ pub mod prelude {
         }
 
         fn handle_client(stream: TcpStream, sessions: Arc<Mutex<Vec<(TcpStream, SocketAddr)>>>, addr: SocketAddr) {
-
             let client_state = ClientState("".to_string(), addr);
+            let mut session: SessionType = (stream.try_clone().unwrap(), addr);
+            let mut reader = BufReader::new(stream.try_clone().unwrap());
+
+            Self::on_connect(&mut session);
 
             loop {
                 let mut message = String::new();
-                let mut reader = BufReader::new(stream.try_clone().unwrap());
 
                 match reader.read_line(&mut message) {
                     Ok(_success) => (),
@@ -88,15 +94,15 @@ pub mod prelude {
                             }
                         }
 
+                        Self::on_disconnect(&mut session);
+
                         sessions.remove(pos_to_remove);
 
                         return 
                     }
                 }
 
-                let mut session: SessionType = (stream.try_clone().unwrap(), addr);
-
-                Self::handle_message(&mut session, &message, &addr.to_string());
+                Self::on_message(&mut session, &message, &addr.to_string());
             }
         }
 
@@ -120,12 +126,24 @@ pub mod prelude {
             }
         }
 
+        /// Is called whenever a client connects to the server
+        /// 
+        /// # Arguments
+        /// * `session` - The SessionType of the connected client
+        fn on_connect(session: &mut SessionType);
+
+        /// Is called whenever a client disconnects from the server
+        /// 
+        /// # Arguments
+        /// * `session` - The SessionType of the disconnected client
+        fn on_disconnect(session: &mut SessionType);
+
         /// Is called whenever a client sends data back to the server
         ///
         /// # Arguments
+        /// * `session` - The SessionType of the sender
         /// * `message` - A string slice that contains the message sent by the client
         /// * `address` - The host address of the client that sent the message
-        #[allow(unused_variables)]
-        fn handle_message(stream: &mut SessionType, message: &str, address: &str); 
+        fn on_message(session: &mut SessionType, message: &str, address: &str); 
     }
 }
