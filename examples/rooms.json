@@ -1,0 +1,27 @@
+[
+    {
+        "id": 0,
+        "name": "Dank Cave",
+        "description": "A very dank cave.",
+        "exits": [
+            { "name": "North", "room": 1 }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Dirt Road",
+        "description": "A dirty road.",
+        "exits": [
+            { "name": "South", "room": 0 },
+            { "name": "West",  "room": 2 }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Shady Forest",
+        "description": "A forest shaded by some shifty looking trees...",
+        "exits": [
+            { "name": "East", "room": 1 }
+        ]
+    }
+]

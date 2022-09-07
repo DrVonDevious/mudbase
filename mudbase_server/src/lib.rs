@@ -29,7 +29,7 @@ pub mod prelude {
         /// Binds a TCP server to the given host address and port number,
         /// and returns a TcpListener
         ///
-        /// # Arguments
+        /// ### Arguments
         /// * `addr` - A string slice for the host address
         /// * `port` - A string slice for the port number
         fn start(&self, addr: &str, port: &str) -> TcpListener {
@@ -40,7 +40,7 @@ pub mod prelude {
 
         /// Begins listening for client connections
         ///
-        /// # Arguments
+        /// ### Arguments
         /// * `listener` - A TcpListener, usually one that is returned by ServerHandler::start()
         /// * `sessions` - A collection of Sessions which connected clients can be added to
         fn listen(&self, listener: TcpListener, sessions: SessionsType) {
@@ -100,7 +100,7 @@ pub mod prelude {
 
         /// Sends a given message to the specified session
         ///
-        /// # Arguments
+        /// ### Arguments
         /// * `session` - A SessionType to send data to
         /// * `message` - A string slice containing the message you want to send to the session
         fn send(session: &mut SessionType, message: &str) {
@@ -109,7 +109,7 @@ pub mod prelude {
 
         /// Sends a given message to all connected clients
         ///
-        /// # Arguments
+        /// ### Arguments
         /// * `sessions` - A SessionsType containing all clients to send data to
         /// * `message` - A string slice containing the message you want to send to the clients
         fn send_all(sessions: &mut SessionsType, message: &str) {
@@ -120,19 +120,19 @@ pub mod prelude {
 
         /// Is called whenever a client connects to the server
         /// 
-        /// # Arguments
+        /// ### Arguments
         /// * `session` - The SessionType of the connected client
         fn on_connect(session: &mut SessionType);
 
         /// Is called whenever a client disconnects from the server
         /// 
-        /// # Arguments
+        /// ### Arguments
         /// * `session` - The SessionType of the disconnected client
         fn on_disconnect(session: &mut SessionType);
 
         /// Is called whenever a client sends data back to the server
         ///
-        /// # Arguments
+        /// ### Arguments
         /// * `session` - The SessionType of the sender
         /// * `message` - A string slice that contains the message sent by the client
         /// * `address` - The host address of the client that sent the message

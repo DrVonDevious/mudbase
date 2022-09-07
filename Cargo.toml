@@ -16,8 +16,12 @@ keywords = ["game-engine", "tcp", "mud"]
 
 [dependencies]
 mudbase_server = { path = "./mudbase_server", version = "1.0.0" }
+mudbase_parser = { path = "./mudbase_parser", version = "1.0.0" }
+serde_json = "1.0.85"
+serde = { version = "1.0.144", features = ["derive"] }
 
 [workspaces]
 members = [
-  "mudbase_server"
+  "mudbase_server",
+  "mudbase_parser"
 ]
