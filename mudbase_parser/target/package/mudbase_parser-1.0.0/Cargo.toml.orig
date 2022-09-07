@@ -1,0 +1,16 @@
+[package]
+name = "mudbase_parser"
+version = "1.0.0"
+edition = "2021"
+authors = ["Caleb Rutland <caleb@thedevious.dev>"]
+description = "A library for loading and parsing MUD game data"
+publish = true
+readme = "README.md"
+homepage = "https://github.com/DrVonDevious/mudbase"
+repository = "https://github.com/DrVonDevious/mudbase"
+license = "MIT"
+keywords = ["mud"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

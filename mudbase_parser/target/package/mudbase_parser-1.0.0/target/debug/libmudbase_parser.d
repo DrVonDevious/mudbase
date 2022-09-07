@@ -1,0 +1,1 @@
+C:\Users\willi\Dev\mudbase\mudbase_parser\target\package\mudbase_parser-1.0.0\target\debug\libmudbase_parser.rlib: C:\Users\willi\Dev\mudbase\mudbase_parser\target\package\mudbase_parser-1.0.0\src\lib.rs
